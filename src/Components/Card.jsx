@@ -54,7 +54,7 @@
 
 //                 )
 //               }
-            
+
 //             </div>
 //           </div>
 //         </div>
@@ -63,9 +63,9 @@
 //   );
 // }
 
-
-
 import React, { useEffect, useState } from "react";
+import "./Card.css";
+import WhereToVoteIcon from "@mui/icons-material/WhereToVote";
 
 export default function WeatherCard() {
   const [city, setCity] = useState(null);
@@ -93,7 +93,7 @@ export default function WeatherCard() {
           <div className="col-md-4">
             {city && city.weather && city.weather[0] && (
               <img
-                src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+                src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@4x.png`}
                 className="img-fluid rounded-start"
                 alt={city.weather[0].description}
               />
@@ -102,30 +102,42 @@ export default function WeatherCard() {
           <div className="col-md-8">
             <div className="card-body">
               <input
+                className="search"
                 type="search"
                 value={search}
                 onChange={(event) => {
                   setSearch(event.target.value);
                 }}
               />
-              <h5 className="card-title">{search}</h5>
-
+              <div className="location-icon">
+              <div>
+                  {" "}
+                  <WhereToVoteIcon style={{ marginRight: "8px" }} />
+                </div>
+                <div>
+                  <h2 className="card-title mt-2"> {search}</h2>
+                </div>
+                
+              </div>
+            </div>
+            <div>
               {!city || city.cod !== 200 ? (
                 <h1>No DATA FOUND</h1>
               ) : (
                 <>
                   <p className="card-text">
-                    {city.weather[0].description}
+                    Condition: {city.weather[0].description}
                   </p>
+
                   <p className="card-text">
-                    <small className="text-body-secondary">
+                    <h5 className="text-body-secondary">
                       Temp: {city.main.temp}°C
-                    </small>
+                    </h5>
                   </p>
                   <p className="card-text">
-                    <small className="text-body-secondary">
+                    <h5 className="text-body-secondary">
                       Humidity: {city.main.humidity}%
-                    </small>
+                    </h5>
                   </p>
                 </>
               )}
@@ -136,4 +148,3 @@ export default function WeatherCard() {
     </>
   );
 }
-
