@@ -102,7 +102,7 @@ export default function WeatherCard() {
           <div className="col-md-8">
             <div className="card-body">
               <input
-                className="search"
+                className="search form-control"
                 type="search"
                 value={search}
                 onChange={(event) => {
@@ -110,14 +110,13 @@ export default function WeatherCard() {
                 }}
               />
               <div className="location-icon">
-              <div>
+                <div>
                   {" "}
                   <WhereToVoteIcon style={{ marginRight: "8px" }} />
                 </div>
                 <div>
                   <h2 className="card-title mt-2"> {search}</h2>
                 </div>
-                
               </div>
             </div>
             <div>
