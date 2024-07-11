@@ -144,6 +144,11 @@ export default function WeatherCard() {
           </div>
         </div>
       </div>
+      <div>
+        <small>
+          Build By Hussain Aslam
+        </small>
+      </div>
     </>
   );
 }
